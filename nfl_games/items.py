@@ -19,5 +19,6 @@ class NflGamesItem(scrapy.Item):
     visiting_score = scrapy.Field()
     home_team = scrapy.Field()
     visiting_team = scrapy.Field()
+    final = scrapy.Field()
 
     pass
