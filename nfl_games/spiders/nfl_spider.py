@@ -38,6 +38,7 @@ class NflSpider(scrapy.Spider):
 
     rows = table.xpath('tr')
 
-    print rows
+    
+    
          
 
