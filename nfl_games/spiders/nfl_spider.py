@@ -57,20 +57,20 @@ class NflSpider(scrapy.Spider):
 
     for row in table.xpath('tr'):
       if len(row.xpath('td/text()').extract()) > 1:
-        fq = int(row.xpath('td/text()').extract()[1].encode('utf-8'))
-        sq = int(row.xpath('td/text()').extract()[2].encode('utf-8')) + fq
-        tq = int(row.xpath('td/text()').extract()[3].encode('utf-8')) + sq
-        foq = int(row.xpath('td/text()').extract()[4].encode('utf-8')) + tq
+        fq = (int(row.xpath('td/text()').extract()[1].encode('utf-8'))) % 10
+        sq = (int(row.xpath('td/text()').extract()[2].encode('utf-8')) + fq) % 10
+        tq = (int(row.xpath('td/text()').extract()[3].encode('utf-8')) + sq) % 10
+        foq = (int(row.xpath('td/text()').extract()[4].encode('utf-8')) + tq) % 10
 
         first.append(fq)
         sec.append(sq)
         third.append(tq)
         four.append(foq)
     
-    self.item['first_q'] = first
-    self.item['second_q'] = sec
-    self.item['third_q'] = third
-    self.item['fourth_q'] = four
+        self.item['first_q'] = first
+        self.item['second_q'] = sec
+        self.item['third_q'] = third
+        self.item['fourth_q'] = four
     yield self.item
 
   # def legion_of_boom(self, response):
