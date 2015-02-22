@@ -10,6 +10,7 @@ fourth = []
 
 firsts = []
 
+
 # Sort data
 for game in data:
 	firsts.append(sorted(game['first_q']))
